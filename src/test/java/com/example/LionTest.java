@@ -9,26 +9,31 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class LionTest {
+
     @Mock
-    private Lion lion;
+    Feline feline;
+    Lion lion;
+
 
     @Before
     public void setUP() throws Exception {
-        lion = new Lion("Самец");
+        lion = new Lion("Самец", feline);
     }
 
     @Test
     public void positiveTestGetKittensLion() throws Exception {
+        when(feline.getKittens()).thenReturn(1);
         assertEquals(1, lion.getKittens());
-        System.out.println("У львов обычно такое количество львят.");
+
     }
 
     @Test
     public void positiveTestEatingFoodLion() throws Exception {
+        when(feline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         assertEquals(List.of("Животные", "Птицы", "Рыба"), lion.getFood());
-        System.out.println("Именно это львы едят.");
     }
 }

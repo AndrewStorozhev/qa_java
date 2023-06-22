@@ -27,13 +27,12 @@ public class CatTest {
     @Test
     public void positiveTestGetSoundCat() {
         assertEquals("Мяу", cat.getSound());
-        System.out.println("Кошка говорит - Мяу.");
+
     }
 
     @Test
     public void positiveTestGetFoodCat() throws Exception {
         when(feline.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
-        assertEquals(List.of("Животные", "Птицы", "Рыба"), cat.getFood());
-        System.out.println("Именно так кошки и питаются.");
+        assertEquals(feline.eatMeat(), cat.getFood());
     }
 }
